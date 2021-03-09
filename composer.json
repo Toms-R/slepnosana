@@ -1,0 +1,5 @@
+{
+    "require": {
+        "draugiem/draugiem-php-sdk": "^1.3"
+    }
+}

@@ -1,0 +1,36 @@
+/* Set the size of the div element that contains the map */
+#map {
+    height: 560px;
+    /* The height is 400 pixels */
+    width: 60%;
+    /* The width is the width of the web page */
+  }
+
+  .form {
+    display: block;
+    max-width: 500px;
+    margin: 4% auto 1%;
+}
+
+input, label {
+  display: block;
+}
+
+#button {
+    display: inline-block;
+    width: 100px;
+    background-color: #0038f0;
+    color: #FFF;
+    border-radius: 5px;
+    text-align: center;
+    margin: auto;
+    cursor: pointer;
+    padding: 8px 12px;
+    transition: all .4s ease-in-out;
+}
+
+#button:hover {
+    background-color: #0129bb;
+}
+
+
