@@ -52,4 +52,24 @@ class Place {
          }
          return false;
     }
+
+    public function readPlaces(){
+        // Create query
+            $querry = "SELECT 
+                id,
+                latitude,
+                longitude,
+                place_name,
+                points,
+                about_place
+                FROM
+                " . $this->db_table . ";";
+
+            // Prepare statement
+            $stmt = $this->conn->prepare($querry);
+            // Execute query
+            $stmt->execute();
+
+            return $stmt;
+    }
 }
