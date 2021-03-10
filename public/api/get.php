@@ -6,12 +6,13 @@
     header("Access-Control-Max-Age: 3600");
     header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-include_once '../config/db.php';
-include_once '../class/places.php';
+require_once '../../config/config.php';
+require_once '../../class/Database.php';
+require_once '../../class/Places.php';
 
 // Instantiate DB & connect
 $database = new Database();
-$db = $database->getConnection();
+$db = $database->getConnection($db_config);
 
 $item = new Place($db);
 

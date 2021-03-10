@@ -9,7 +9,7 @@ function initMap() {
     },
   });
 
-  const API_url = 'http://localhost/slepnosana/api/get.php';
+  const API_url = 'api/get.php';
   var request = new XMLHttpRequest()
 
   // Open a new connection, using the GET request on the URL endpoint

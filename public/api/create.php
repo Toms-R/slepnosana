@@ -5,11 +5,12 @@
     header("Access-Control-Max-Age: 3600");
     header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-    include_once "../config/db.php";
-    include_once "../class/places.php";
+    require_once '../../config/config.php';
+    require_once '../../class/Database.php';
+    require_once '../../class/Places.php';
 
     $database = new Database();
-    $db = $database->getConnection();
+    $db = $database->getConnection($db_config);
 
     parse_str(file_get_contents("php://input"), $data);
 
