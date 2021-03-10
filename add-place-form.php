@@ -47,7 +47,7 @@
             </div>
         </div>
     </div>
-
+    
     <script src="assets/scripts.js"></script>
 </body>
 
