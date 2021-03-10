@@ -9,34 +9,33 @@ function initMap() {
     },
   });
 
-  const infowindow = new google.maps.InfoWindow({
-    content: "TESTING",
-  });
-
-
   const API_url = 'http://localhost/slepnosana/api/get.php';
   var request = new XMLHttpRequest()
+
   // Open a new connection, using the GET request on the URL endpoint
   request.open('GET', API_url, true)
-
-
   request.onload = function () {
     // Begin accessing JSON data here
     var data = JSON.parse(this.response)
+
     for (var i = 0; i < data.length; i++) {
+      // New marker
       var marker = new google.maps.Marker({
         position: new google.maps.LatLng(data[i].latitude, data[i].longitude),
         map,
-        title: "TITLE HAS TO BE HERE",
       });
-      var content = "<h3>" + data[i].place_name + '</h3><br>' + "About: " + data[i].about_place;
 
+      var content = "<h6>" + data[i].place_name + '</h6><br>' + "About: " + data[i].about_place;
       var infowindow = new google.maps.InfoWindow()
 
+      // Marker event listener
       google.maps.event.addListener(marker, 'click', (function (marker, content, infowindow) {
         return function () {
+          // Marker click attributes
           infowindow.setContent(content);
           infowindow.open(map, marker);
+          map.setZoom(10);
+          map.panTo(marker.position);
         };
       })(marker, content, infowindow));
     }
