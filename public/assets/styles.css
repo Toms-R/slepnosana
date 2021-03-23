@@ -16,7 +16,7 @@ input, label {
   display: block;
 }
 
-#button {
+#add-place {
     display: inline-block;
     width: 100px;
     background-color: #0038f0;
@@ -29,7 +29,7 @@ input, label {
     transition: all .4s ease-in-out;
 }
 
-#button:hover {
+#add-place:hover {
     background-color: #0129bb;
 }
 

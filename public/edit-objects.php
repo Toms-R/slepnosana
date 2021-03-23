@@ -13,28 +13,46 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="../assets/styles.css">
+    <link rel="stylesheet" href="assets/styles.css">
 </head>
 
-<body>
-    <h1>Object has to show here!</h1>
+<body onload="getAllEntries()">
 
-    <?php 
-      require_once "object_display_data.php";
-    ?>
-  <div class="container">
+<!-- Button trigger modal -->
+<!-- <button id="edit-object" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Labot</button> -->
+<!-- <a href="#exampleModal" class="btn btn-info btn-lg">Open modal</a> -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" data-id="1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Labot ierakstu</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <div id="modal-places">
+
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Aizvērt</button>
+        <button type="button" class="btn btn-primary" onclick="editPlace()">Saglabāt</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="container">
         <div class="row">
             <div class="col">
-                    <div id="map"></div>
+                <ul id="places">
+
+                </ul>
             </div>
         </div>
     </div>
-    <?php include '../../config/config.php' ?>
 
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=<?php echo $googleAPI; ?>&callback=initMap&libraries=&v=beta&map_ids=e7903b59956c0e74"
-      async
-    ></script>
-    <script src="../assets/scripts.js"></script>
+    <script src="assets/scripts.js"></script>
 </body>
 </html>
