@@ -12,37 +12,12 @@ function initMap() {
     },
   });
 
+
   directionsRenderer.setMap(map);
 
-  const onChangeHandler = function () {
-    calculateAndDisplayRoute(directionsService, directionsRenderer);
-  };
-  document.getElementById("start").addEventListener("change", onChangeHandler);
-  document.getElementById("end").addEventListener("change", onChangeHandler);
 
 
-  function calculateAndDisplayRoute(directionsService, directionsRenderer) {
-    directionsService.route(
-      {
-        origin: {
-          query: document.getElementById("start").value,
-        },
-        destination: {
-          query: document.getElementById("end").value,
-        },
-        travelMode: google.maps.TravelMode.WALKING,
-      },
-      (response, status) => {
-        if (status === "OK") {
-          directionsRenderer.setDirections(response);
-        } else {
-          window.alert("Directions request failed due to " + status);
-        }
-      }
-    );
-  }
-
-  const API_url = 'api/get.php';
+  const API_url = '../api/get.php';
   var request = new XMLHttpRequest()
 
   // Open a new connection, using the GET request on the URL endpoint
@@ -56,10 +31,10 @@ function initMap() {
       var marker = new google.maps.Marker({
         position: new google.maps.LatLng(data[i].latitude, data[i].longitude),
         map,
-        icon: "assets/tree.png"
+        icon: "/assets/tree.png"
       });
 
-      var content = "<h6>" + data[i].place_name + '</h6><br>' + "About: " + data[i].about_place;
+      var content = "<h6>" + data[i].place_name + '</h6> <br>';
       var infowindow = new google.maps.InfoWindow()
 
       // Marker event listener
@@ -68,10 +43,67 @@ function initMap() {
           // Marker click attributes
           infowindow.setContent(content);
           infowindow.open(map, marker);
-          map.setZoom(10);
+          map.setZoom(15);
           map.panTo(marker.position);
         };
       })(marker, content, infowindow));
+
+      //Select directions
+
+      const onChangeHandler = function () {
+
+        if ($("#end").val() == "") {
+          return true;
+        }
+        var selectedDestination = $("#end").val().split(", ");
+        var latLong1 = new google.maps.LatLng(currentLat, currentLong);
+        var latLong2 = new google.maps.LatLng(selectedDestination[0], selectedDestination[1]);
+        directionsService.route(
+          {
+            origin: latLong1,
+            destination: latLong2,
+            travelMode: google.maps.TravelMode.WALKING,
+          },
+          (response, status) => {
+            if (status === "OK") {
+              directionsRenderer.setDirections(response);
+            } else {
+              window.alert("Directions request failed due to " + status);
+            }
+          }
+        );
+      };
+    
+      // function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+      //   if ($("#end").val() == "") {
+      //     return true;
+      //   }
+      //   var selectedDestination = $("#end").val().split(", ");
+      //   var latLong1 = new google.maps.LatLng(currentLat, currentLong);
+      //   var latLong2 = new google.maps.LatLng(selectedDestination[0], selectedDestination[1]);
+      //   directionsService.route(
+      //     {
+      //       origin: latLong1,
+      //       destination: latLong2,
+      //       travelMode: google.maps.TravelMode.WALKING,
+      //     },
+      //     (response, status) => {
+      //       if (status === "OK") {
+      //         directionsRenderer.setDirections(response);
+      //       } else {
+      //         window.alert("Directions request failed due to " + status);
+      //       }
+      //     }
+      //   );
+      // }
+      var origLat = data[i].latitude;
+      var origLong =  data[i].longitude;
+
+      $("#end").on("change", onChangeHandler);
+
+        if (data[i].id != superid) {
+        $("#end").append("<option value='"+ origLat + ", " + origLong  +"'>" + data[i].place_name  +"</option>");
+        }
     }
   }
   // Send request
@@ -99,18 +131,22 @@ $("#add-place").click(function () {
   console.log(newPlace);
   let saveData = $.ajax({
     type: 'POST',
-    url: "api/create.php",
+    url: "/api/create.php",
     data: newPlace,
     dataType: "text",
     success: function (resultData) {
-      let deita = JSON.parse(resultData);
-      addPlace(deita.id, lat, long, place_name, points, about_place);
+      //let deita = JSON.parse(resultData);
+      //addPlace(lat, long, place_name, points, about_place);
       $('input[name=latitude]').val('');
       $('input[name=longitude]').val('');
       $('input[name=place_name]').val('');
       $('input[name=points]').val('');
       $('input[name=about_place]').val('');
-    }
+    },
+    error: function (resultData) {
+    alert("Viss slikti");
+    console.log(resultData);
+ }
   });
 });
 
@@ -143,7 +179,7 @@ function editPlace() {
 
   let saveData = $.ajax({
     type: 'PUT',
-    url: "api/update.php",
+    url: "/api/update.php",
     data: newPlace,
     dataType: "text",
     success: function (resultData) {
@@ -165,7 +201,7 @@ function editPlace() {
 // Get all objects for editing.
 
 function getAllEntries() {
-  const API_url = 'api/get.php';
+  const API_url = '/api/get.php';
   var request = new XMLHttpRequest()
 
   // Open a new connection, using the GET request on the URL endpoint
