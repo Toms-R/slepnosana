@@ -9,23 +9,21 @@ function initMap() {
     },
   });
 
-  const API_url = 'api/get.php';
+  const API_url = 'http://localhost/slepnosana/public/api/get.php';
   var request = new XMLHttpRequest()
 
-  // Open a new connection, using the GET request on the URL endpoint
   request.open('GET', API_url, true)
   request.onload = function () {
-    // Begin accessing JSON data here
-    var data = JSON.parse(this.response)
+    var API_data = JSON.parse(this.response)
 
-    for (var i = 0; i < data.length; i++) {
+    for (var i = 0; i < API_data.length; i++) {
       // New marker
       var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(data[i].latitude, data[i].longitude),
+        position: new google.maps.LatLng(API_data[i].latitude, API_data[i].longitude),
         map,
       });
 
-      var content = "<h6>" + data[i].place_name + '</h6><br>' + "About: " + data[i].about_place;
+      var content = "<h6>" + API_data[i].place_name + '</h6><br>' + "About: " + API_data[i].about_place;
       var infowindow = new google.maps.InfoWindow()
 
       // Marker event listener
@@ -40,7 +38,6 @@ function initMap() {
       })(marker, content, infowindow));
     }
   }
-  // Send request
   request.send()
 }
 

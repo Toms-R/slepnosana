@@ -53,8 +53,7 @@ class Place {
          return false;
     }
 
-    public function readPlaces(){
-        // Create query
+    public function getAllPlaces(){
             $querry = "SELECT 
                 id,
                 latitude,
@@ -65,9 +64,8 @@ class Place {
                 FROM
                 " . $this->db_table . ";";
 
-            // Prepare statement
             $stmt = $this->conn->prepare($querry);
-            // Execute query
+            
             $stmt->execute();
 
             return $stmt;

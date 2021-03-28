@@ -5,7 +5,7 @@
     header("Access-Control-Max-Age: 3600");
     header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-    require_once '../../config/config.php';
+    require_once '../../config/config.default.php';
     require_once '../../class/Database.php';
     require_once '../../class/Places.php';
 

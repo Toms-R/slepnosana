@@ -1,7 +1,7 @@
 <?php   
     $db_config = [
-    'host' => "",
-    'database_name' => "",
-    'username' => "",
+    'host' => "localhost",
+    'database_name' => "slepnosana",
+    'username' => "root",
     'password' => "",
     ];
