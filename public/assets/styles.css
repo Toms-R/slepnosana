@@ -1,9 +1,162 @@
+body {
+  background: rgb(190,197,189);
+  background: linear-gradient(20deg, rgba(190,197,189,1) 0%, rgba(255,255,255,1) 50%, rgba(190,197,189,1) 100%);
+}
+
 /* Set the size of the div element that contains the map */
 #map {
     height: 560px;
     /* The height is 400 pixels */
     width: 60%;
     /* The width is the width of the web page */
+  }
+
+  h1 {
+    font-family: 'Blinker';
+    font-size: 8em;
+    color: white;
+  }
+
+  h2{
+    font-family: 'Blinker';
+    font-size: 2em;
+    color: rgba(43,133,144,255);
+    text-align: center;
+  }
+
+  h3{
+    font-family: 'Blinker';
+    font-size: 1em;
+    color: rgba(43,133,144,255);
+  }
+
+  form label {
+    font-family: 'Blinker';
+    font-size: 1em;
+    color: rgba(43,133,144,255);
+  }
+
+  .form-page {
+    min-height: 100vh;
+  }
+
+  h4 {
+    text-align: center;
+  }
+
+  .slepnosana-container-clean{
+    padding: 5% 0;
+  }
+
+
+
+  .slepnosana-container{
+    background: url(fons1.jpg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    width: 100%;
+    height: 500px;
+    position: relative;
+    text-align: center;
+    color: white;
+    -webkit-clip-path: polygon(0 0, 0 80%, 20% 100%, 100% 100%, 100% 0);
+    clip-path: polygon(0 0, 0 80%, 20% 100%, 100% 100%, 100% 0);
+  }
+
+  .slepnosana-container-2{
+    background: url(fons2.jpg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    width: 100%;
+    height: 500px;
+    position: relative;
+    text-align: center;
+    color: white;
+    -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 20%, 80% 0);
+    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 20%, 80% 0);
+  }
+
+  .slepnosana-container-3{
+    background: url(fons3.jpg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    width: 100%;
+    height: 500px;
+    position: relative;
+    text-align: center;
+    color: white;
+    -webkit-clip-path: polygon(0 0, 0 80%, 20% 100%, 100% 100%, 100% 0);
+    clip-path: polygon(0 0, 0 80%, 20% 100%, 100% 100%, 100% 0);
+  }
+
+  .slepnosana-container-4{
+    background: url(fons4.jpg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    width: 100%;
+    height: 500px;
+    position: relative;
+    text-align: center;
+    color: white;
+    -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 20%, 80% 0);
+    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 20%, 80% 0);
+  }
+  .layer {
+    background-color: rgba(66, 133, 244, 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+
+.layer:hover {
+  background-color: transparent;
+  -webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .container-heading{
+    padding: 1% 0;
+    margin: 1% 0;
+  }
+
+  .container-heading h3 {
+    border: solid 1px;
+    padding: 20px;
+  }
+
+  i {
+    padding-top: 5%;
+    color: rgba(43,133,144,255);
+  }
+
+  .card {
+    min-height: 220px;
+    border: 1px solid #349FAD;
+    background-color: transparent;
+  }
+
+
+  .about-place img {
+    width: 200px;
+  }
+  .about-place h3 {
+    font-family: 'Blinker';
+    font-size: 1em;
+    color: rgba(43,133,144,255);
   }
 
   .form {
@@ -16,10 +169,35 @@ input, label {
   display: block;
 }
 
-#button {
+input {
+  width: 100%;
+}
+
+ul {
+  margin: 20px 0;
+  font-family: 'Blinker';
+  font-size: 1em;
+  color: rgba(43,133,144,255);
+}
+
+ul a {
+  float: right;
+  color: #349FAD;
+  text-decoration: none;
+  border: 1px solid #349FAD;
+  background: transparent;
+  padding: 5px;
+}
+
+ul a:hover {
+  background: rgba(66, 133, 244);
+  text-decoration: none;
+}
+
+#add-place {
     display: inline-block;
     width: 100px;
-    background-color: #0038f0;
+    background-color: rgba(43,133,144,255);
     color: #FFF;
     border-radius: 5px;
     text-align: center;
@@ -27,10 +205,11 @@ input, label {
     cursor: pointer;
     padding: 8px 12px;
     transition: all .4s ease-in-out;
+    margin-top: 20px;
 }
 
-#button:hover {
-    background-color: #0129bb;
+#add-place:hover {
+    background-color: rgba(66, 133, 244);
 }
 
 

@@ -5,3 +5,7 @@
     'username' => "root",
     'password' => "",
     ];
+
+    $googleAPI = "";
+    $draugiem_key = "";
+    $draugiem_id;
