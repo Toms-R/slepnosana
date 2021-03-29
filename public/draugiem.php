@@ -1,7 +1,7 @@
 <?php
 
-require_once "vendor/autoload.php";
-require_once "config/config.php";
+require_once "../vendor/autoload.php";
+require_once "../config/config.php";
 
 //Izveido API objektu
 $draugiem = new DraugiemApi($draugiem_id, $draugiem_key);
@@ -31,7 +31,7 @@ if ($draugiem->getSession()) {
 
 } else {
         echo 'Authorization failed';
-        echo $draugiem->getLoginButton('http://localhost/slepnosana/draugiem.php',false);
+        echo $draugiem->getLoginButton('http://localhost/draugiem.php',false);
         //Sesijas izveidošana neveiksmīga.
         //Lietotājs vai nu izgājis no draugiem.lv vai
         //nav izdevies aplikācijas autorizācijas pieprasījums.

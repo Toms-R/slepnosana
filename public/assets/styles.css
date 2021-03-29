@@ -51,7 +51,7 @@ body {
 
 
   .slepnosana-container{
-    background: url(fons1.jpg);
+    background: url(images/fons1.jpg);
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
@@ -65,7 +65,7 @@ body {
   }
 
   .slepnosana-container-2{
-    background: url(fons2.jpg);
+    background: url(images/fons2.jpg);
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
@@ -79,7 +79,7 @@ body {
   }
 
   .slepnosana-container-3{
-    background: url(fons3.jpg);
+    background: url(images/fons3.jpg);
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
@@ -93,7 +93,7 @@ body {
   }
 
   .slepnosana-container-4{
-    background: url(fons4.jpg);
+    background: url(images/fons4.jpg);
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;

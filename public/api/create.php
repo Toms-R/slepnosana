@@ -21,7 +21,7 @@
     $item->points = $data['points'];
     $item->about_place = $data['about_place'];
 
-    if($item->addPlace()){
+    if($item->addPlace()) {
         echo 'Place created successfully.';
     } else{
         echo 'Place could not be created.';

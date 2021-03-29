@@ -2,11 +2,8 @@
 class Place {
 
     private $conn;
-
-    // Table.
     private $db_table = "places";
 
-    // Columns.
     public $id;
     public $latitude;
     public $longitude;
@@ -14,7 +11,6 @@ class Place {
     public $points;
     public $about_place;
 
-    //DB connection
     public function __construct($db)
     {
         $this->conn = $db;
@@ -39,22 +35,19 @@ class Place {
         $this->points=htmlspecialchars(strip_tags($this->points));
         $this->about_place=htmlspecialchars(strip_tags($this->about_place));
 
-        // Bind data.
-
         $stmt->bindParam(":latitude", $this->latitude);
         $stmt->bindParam(":longitude", $this->longitude);
         $stmt->bindParam(":place_name", $this->place_name);
         $stmt->bindParam(":points", $this->points);
         $stmt->bindParam(":about_place", $this->about_place);
 
-        if($stmt->execute()){
+        if ($stmt->execute()) {
             return true;
          }
          return false;
     }
 
-    public function readPlaces(){
-        // Create query
+    public function readPlaces() {
             $querry = "SELECT 
                 id,
                 latitude,
@@ -65,14 +58,13 @@ class Place {
                 FROM
                 " . $this->db_table . ";";
 
-            // Prepare statement
             $stmt = $this->conn->prepare($querry);
-            // Execute query
+
             $stmt->execute();
 
             return $stmt;
     }
-    public function readPlace(){
+    public function readPlace() {
         $querry = "SELECT
         id,
         latitude,
@@ -84,9 +76,8 @@ class Place {
         " . $this->db_table. "
         WHERE id = :id";
 
-        // Prepare statement
         $stmt = $this->conn->prepare($querry);
-        // Execute query
+
         $stmt->bindParam(":id", $this->id);
         $stmt->execute();
 
@@ -97,7 +88,6 @@ class Place {
         $this->place_name = $row['place_name'];
         $this->points = $row['points'];
         $this->about_place = $row['about_place'];
-
     }
 
     public function editPlace() {
@@ -111,9 +101,8 @@ class Place {
         about_place = :about_place
         WHERE id = :id";
 
-        // Prepare statement
         $stmt = $this->conn->prepare($querry);
-        // Execute query
+
         $stmt->bindParam(":id", $this->id);
         $stmt->bindParam(":latitude", $this->latitude);
         $stmt->bindParam(":longitude", $this->longitude);
@@ -122,8 +111,7 @@ class Place {
         $stmt->bindParam(":about_place", $this->about_place);
 
         $status = $stmt->execute();
-        // $stmt->execute();
-        var_dump($status);
+        // var_dump($status);
         if ($status){
 
             return true;
@@ -133,5 +121,4 @@ class Place {
 
         return false;
     }
-
 }

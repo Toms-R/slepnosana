@@ -6,4 +6,3 @@ CREATE TABLE `places` (
   `points` int(11) NOT NULL,
   `about_place` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
